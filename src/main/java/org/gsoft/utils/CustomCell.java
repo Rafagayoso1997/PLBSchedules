@@ -27,14 +27,11 @@ public class CustomCell<T> extends TableCell<TableExcelModel, String> {
             }
         });
 
-        textField.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
-                if (newPropertyValue) {
-                    System.out.println("Textfield on focus");
-                } else {
-                    commitEdit(textField.getText());
-                }
+        textField.focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
+            if (newPropertyValue) {
+                System.out.println("Textfield on focus");
+            } else {
+                commitEdit(textField.getText());
             }
         });
     }
@@ -66,12 +63,10 @@ public class CustomCell<T> extends TableCell<TableExcelModel, String> {
     protected void updateItem(String item, boolean empty) {
         super.updateItem(item, empty);
         if (item == null || empty) {
-            setText(null);
+            setText("");
             setStyle("");
         } else {
-
             if (item.equalsIgnoreCase("FIN DE SEMANA")) {
-
                 setStyle("-fx-background-color:" + WEEKEND_COLOR);
                 setEditable(false);
             } else if (item.equalsIgnoreCase("FESTIVO AUTONÓMICO")) {
@@ -83,12 +78,17 @@ public class CustomCell<T> extends TableCell<TableExcelModel, String> {
                 setStyle("-fx-background-color:" + LOCAL_COLOR);
                 setEditable(false);
             } else if (item.equalsIgnoreCase("FESTIVO NACIONAL")) {
-
                 setStyle("-fx-background-color:" + NATIONAL_COLOR);
                 setEditable(false);
+            }else {
+                setStyle("");
+                setEditable(true);
             }
+
             text.setText(item);
             setGraphic(text);
+
+
         }
     }
 

@@ -11,6 +11,7 @@ module org.gsoft {
 
     opens org.gsoft to javafx.fxml;
     opens org.gsoft.controller to javafx.fxml;
+
     opens org.gsoft.model to javafx.base;
     exports org.gsoft;
 }

@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.gsoft.services.ServicesLocator;
 
+import java.io.File;
+
 public class Empleado {
     private SimpleIntegerProperty cod_empleado;
     private final SimpleStringProperty nombre;
@@ -14,6 +16,7 @@ public class Empleado {
     private final SimpleIntegerProperty cod_empresa;
     private final SimpleStringProperty nombre_empresa;
     private final SimpleIntegerProperty horas_laborables;
+    private String direccionCronograma;
 
     @SuppressWarnings("unused")
     public Empleado(String nombre, String primer_apellido, String segundo_apellido, String nif, String numero_afiliacion, int horas_laborables, int cod_empresa) {
@@ -38,6 +41,8 @@ public class Empleado {
         this.horas_laborables = new SimpleIntegerProperty(horas_laborables);
         this.cod_empresa = new SimpleIntegerProperty(cod_empresa);
         this.nombre_empresa = new SimpleStringProperty(ServicesLocator.getEnterprise().getEmpresaNombreByCod(cod_empresa));
+        this.direccionCronograma = System.getProperty("user.home") + "/Desktop" + File.separator +
+                this.nombre_empresa.get() + File.separator + this.nombre.get() + " " + this.primer_apellido.get()+".xlsx";
 
     }
 
@@ -52,6 +57,7 @@ public class Empleado {
         this.cod_empresa = new SimpleIntegerProperty();
         this.nombre_empresa = new SimpleStringProperty();
         this.horas_laborables = new SimpleIntegerProperty();
+        this.direccionCronograma = "";
     }
 
 
@@ -178,28 +184,27 @@ public class Empleado {
 
 
 
-    @SuppressWarnings("unused")
-    public String toStringCode() {
-        return "Empleado{" +
-                "cod_empleado=" + cod_empleado +
-                ", nombre='" + nombre + '\'' +
-                ", primer_apellido='" + primer_apellido + '\'' +
-                ", segundo_apellido='" + segundo_apellido + '\'' +
-                ", nif='" + nif + '\'' +
-                ", numero_afiliacion='" + numero_afiliacion + '\'' +
-                ", nombre_empresa=" + nombre_empresa +
-                '}';
+    public String getDireccionCronograma() {
+        return direccionCronograma;
+    }
+
+    public void setDireccionCronograma(String direccionCronograma) {
+        this.direccionCronograma = direccionCronograma;
     }
 
     @Override
     public String toString() {
         return "Empleado{" +
-                "nombre='" + nombre + '\'' +
-                ", primer_apellido='" + primer_apellido + '\'' +
-                ", segundo_apellido='" + segundo_apellido + '\'' +
-                ", nif='" + nif + '\'' +
-                ", numero_afiliacion='" + numero_afiliacion + '\'' +
+                "cod_empleado=" + cod_empleado +
+                ", nombre=" + nombre +
+                ", primer_apellido=" + primer_apellido +
+                ", segundo_apellido=" + segundo_apellido +
+                ", nif=" + nif +
+                ", numero_afiliacion=" + numero_afiliacion +
+                ", cod_empresa=" + cod_empresa +
                 ", nombre_empresa=" + nombre_empresa +
+                ", horas_laborables=" + horas_laborables +
+                ", direccionCronograma='" + direccionCronograma + '\'' +
                 '}';
     }
 }

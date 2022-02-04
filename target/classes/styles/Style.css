@@ -29,7 +29,7 @@
 }
 
 .table-view .column-header, .table-view .filler {
-    -fx-size: 60pt;
+    -fx-size: 30pt;
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
     -fx-border-color:
@@ -41,7 +41,7 @@
 }
 
 .table-view .column-header .label {
-    -fx-font-size: 20px;
+    -fx-font-size: 15px;
     -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white;
     -fx-alignment: center;
@@ -54,7 +54,7 @@
 
 .table-cell {
     -fx-border-color: -fx-box-border -fx-box-border transparent transparent;
-    -fx-font: 18px "Segoe UI Symbol";
+    -fx-font: 12px "Segoe UI Symbol";
     -fx-text-fill: #2f2484;
 }
 
@@ -149,4 +149,45 @@
     -fx-background-insets: -0.2, 1, -1.4, 3;
     -fx-background-radius: 0;
     -fx-padding: 4 7 4 15 ;
+}
+
+.highlight-rectangle{
+    -fx-background-color: derive(-primary, 50%);
+    -fx-background-radius: 5px;
+}
+
+/* Modificar el color de fondo del área del Panel de TabPane */
+.tab-pane {
+    -fx-background-color: rgba(255, 255, 255, 0);
+}
+/* Modificar el color de fondo de la pestaña */
+.tab {
+    -fx-background-color: #fff6f6;
+}
+/* Modificar el color de fondo de la barra superior */
+/*.tab-pane>*.tab-header-area>*.tab-header-background
+{
+    -fx-background-color: -fx-outer-border, -fx-text-box-border, rgba(85, 152, 184, 0);
+}*/
+/* Modificar el color del texto en la pestaña */
+.tab-label {
+    -fx-text-fill: #000000;
+    -fx-font-size: 15px;
+
+}
+/* Selector secundario, seleccione su etiqueta de elemento secundario cuando se selecciona Tabulador */
+.tab:selected .tab-label {
+    -fx-text-fill: #ffffff;
+}
+/* Establecer el color de fondo cuando se selecciona la pestaña */
+.tab:selected {
+    -fx-background-color: #5598b8;
+    -fx-text-fill: #ffffff;
+}
+
+/* Cuando se selecciona Tab, seleccione su borde y modifique el estilo */
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-radius: 0px;
+    -fx-border-width: 1px 1px 1px 1px;
+    -fx-border-color: #4d1a4dff;
 }

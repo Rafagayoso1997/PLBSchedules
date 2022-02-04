@@ -158,6 +158,8 @@ public class EmployeesManagementController implements Initializable {
 
         populateTable();
 
+        employeesTable.getItems().stream().forEach(empleado -> System.out.println(empleado.getDireccionCronograma()));
+
         deleteItem.setOnAction(event -> deleteEmployee());
         insertBtn.setOnAction(event -> openModal());
     }
